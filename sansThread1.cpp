@@ -22,7 +22,7 @@ double G=80;
 double B=150;
  int i;
 
-
+//partie fonction fractale
 
 std::complex<long double> c(  -0.772691322542185 ,0.124281466072787);
 
