@@ -22,11 +22,11 @@ double G=80;
 double B=150;
  int i;
 
-//partie fonction fractale
+
 
 std::complex<long double> c(  -0.772691322542185 ,0.124281466072787);
 
-void clr();
+/*fonction qui permet recuperer l'image à l'ecran */
 int main( int argc, char** argv )
 {
 struct timeval temps_avant, temps_apres;
@@ -49,34 +49,4 @@ struct timeval temps_avant, temps_apres;
 
 }
 
- void clr(){
-  
-for(int x=0;x<WIDTH;x++){
-      for(int y=0;y<HEIGHT;y++){
-        long double newX=((long double)((long double)x-((long double)WIDTH/2))/
-((long double)WIDTH/2));
-        long double newY=((long double)((long double)y-((long double)HEIGHT/2))/
-((long double)HEIGHT/2));
-        std::complex<long double> z(newY,newX);
-        int i=0;
-        long double norm = std::norm(z);
-                while(i<ITER && norm<V){
-          z=(z*z)+c;
-          norm = std::norm(z);
-          i++;
-        }
-        if(i==ITER && norm<V){
-          mtrc.at<Vec3b>(x,y)[0]=rng.uniform(255,0)+R; 
-          mtrc.at<Vec3b>(x,y)[1]=rng.uniform(0,250)+G; 
-          mtrc.at<Vec3b>(x,y)[2]=rng.uniform(150,400)+B;
-        }
-        else{
-          int couleur=(int)((float)i/(float)ITER*360);
-          mtrc.at<Vec3b>(x,y)[0]=10;
-          mtrc.at<Vec3b>(x,y)[1]=couleur;
-          mtrc.at<Vec3b>(x,y)[2]=255;
-      }
-    } 
 
-
-}}
